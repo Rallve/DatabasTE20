@@ -4,13 +4,13 @@ import java.sql.*;
 public class DatabaseExample {
     public static void main(String[] args) {
         Connection conn = null;
-        String user = "magnus";
+        String user = "te20";
         JPasswordField pf = new JPasswordField();
         JOptionPane.showConfirmDialog(null, pf, "password?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         String password = new String(pf.getPassword());
 
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/bookshop? "+
+            conn = DriverManager.getConnection("jdbc:mysql://db.umea-ntig.se:3306/te20? "+
                     "allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",user,password);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -19,7 +19,7 @@ public class DatabaseExample {
 
         try {
             Statement stmt = conn.createStatement();
-            String SQLQuery = "SELECT * FROM book";
+            String SQLQuery = "SELECT eho02forum.*, eho02users.name FROM eho02forum JOIN eho02users ON eho02forum.authorId = eho02users.id ORDER BY id DESC LIMIT 20\n";
             ResultSet result = stmt.executeQuery(SQLQuery);
 
             ResultSetMetaData metadata = result.getMetaData();
@@ -33,9 +33,8 @@ public class DatabaseExample {
                 String output = "";
                 output += result.getInt("id") + ", " +
                         result.getString("title") + ", " +
-                        result.getString("author") + ", " +
-                        result.getDouble("price") + ", " +
-                        result.getInt("quantity");
+                        result.getString("content") + ", " +
+                        result.getString("name");
                 System.out.println(output);
             }
 
