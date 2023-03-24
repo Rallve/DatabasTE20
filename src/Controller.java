@@ -1,8 +1,7 @@
 import javax.swing.*;
 import java.sql.*;
 
-public class DatabaseExample {
-    /*
+public class Controller {
     public static void main(String[] args) {
         Connection conn = null;
         String user = "te20";
@@ -45,6 +44,4 @@ public class DatabaseExample {
             e.printStackTrace();
         }
     }
-
-     */
 }
