@@ -1,0 +1,1 @@
+I mitt forum program ska man kunna registrera sig, logga in och posta saker
